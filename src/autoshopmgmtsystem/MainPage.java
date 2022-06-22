@@ -2,6 +2,9 @@ package autoshopmgmtsystem;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,10 +13,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import java.awt.Font;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MainPage extends JFrame {
@@ -115,14 +115,12 @@ public class MainPage extends JFrame {
 		VehiclesPage obj = new VehiclesPage();
 		obj.setVisible(true);
 		dispose();
-		
 	}
 	
 	private void btnLogoutActionPerformed(ActionEvent e) {
 		ShopLogin obj = new ShopLogin();
 		obj.setVisible(true);
 		dispose();
-		
 	}
 	
 
