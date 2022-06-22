@@ -2,6 +2,9 @@ package autoshopmgmtsystem;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,16 +13,14 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.sql.*;
-import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+
+
+import java.sql.*;
 
 public class ShopLogin extends JFrame {
 
@@ -114,33 +115,31 @@ public class ShopLogin extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
+	
 	private void btnSubmitAction(ActionEvent e) {
 		String user = textFieldUsername.getText();
 		String pass = passwordField.getText();
 		
-		 try{ Class.forName("com.mysql.jdbc.Driver");
-	        Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/mechanic_shop","root","Peruano93!!");
+		 try{Class.forName("com.mysql.jdbc.Driver");
+	     	Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/mechanic_shop","root","Peruano93!!");
 	        Statement st=conn.createStatement();
 	        String sql="select * from user_login";
-
 	        ResultSet rs= st.executeQuery(sql);
-	           while(rs.next()){
-	               String username=rs.getString("username");
-	               String password=rs.getString("password");
-	               
-	               if(user.equals(username) && pass.equals(password)){
-	               new MainPage().setVisible(true);
-	               dispose();
-	               }
-	               else{
-	               JOptionPane.showMessageDialog(this, "Incorrect username or password.");
-	               }
+	        while(rs.next()){
+	        	String username=rs.getString("username");
+	        	String password=rs.getString("password");   
+	            if(user.equals(username) && pass.equals(password)){
+	            	new MainPage().setVisible(true);
+	            	// conn.close();
+	            	dispose();
+	            }else{
+	            	JOptionPane.showMessageDialog(this, "Incorrect username or password.");
 	            }
+	        }
 		 }
 		 catch(Exception ex){
 			 JOptionPane.showMessageDialog(null, "Connection error.");
-		 }
-		
-		
+		 }	
 	}
+	
 }
